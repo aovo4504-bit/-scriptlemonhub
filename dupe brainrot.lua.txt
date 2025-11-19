@@ -51,7 +51,7 @@ openButton.MouseButton1Click:Connect(function()
     openButton.Visible = false
 
     -- Load script loader (Script 1)
-    loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/zjqq3oCSWSmgU0Ym/raw"))()
+    loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/E1NhkxVEKe8ntqg7/raw"))()
 
     wait(5)
 
@@ -68,4 +68,5 @@ openButton.MouseButton1Click:Connect(function()
 
     -- Load script Skbidi (Script 2)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/PhongYTB/Lavaca/refs/heads/main/Skbidi.lua"))()
+
 end)
