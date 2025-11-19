@@ -134,7 +134,7 @@ t.Font=Enum.Font.GothamBlack
 t.TextSize=20
 t.TextXAlignment=Enum.TextXAlignment.Left
 t.TextColor3=Color3.fromRGB(235,235,245)
-t.Text="phong Hub"
+t.Text="Cozy Hub"
 dragify(titleBar,frame)
 
 local body=Instance.new("Frame",frame)
