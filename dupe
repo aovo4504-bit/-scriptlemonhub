@@ -70,7 +70,7 @@ local avatar=Instance.new("ImageLabel",box)
 avatar.Size=UDim2.new(0,56,0,56)
 avatar.Position=UDim2.new(0,16,0,12)
 avatar.BackgroundTransparency=1
-avatar.Image="rbxassetid://83381859755546"
+avatar.Image="https://cdn.discordapp.com/attachments/1439658574187069450/1440358993359802378/IMG_0830.png?ex=691f2fd8&is=691dde58&hm=f492f234b5bbcc6196ad23a6f23f0293b953f56899a0cdca60f258c5a819c357&"
 Instance.new("UICorner",avatar).CornerRadius=UDim.new(1,0)
 
 local title=Instance.new("TextLabel",box)
@@ -81,7 +81,7 @@ title.Font=Enum.Font.GothamBold
 title.TextSize=22
 title.TextColor3=Color3.fromRGB(255,255,255)
 title.TextXAlignment=Enum.TextXAlignment.Left
-title.Text="phong hub loading..."
+title.Text="Cozy Hub loading..."
 
 local barBg=Instance.new("Frame",box)
 barBg.AnchorPoint=Vector2.new(0.5,0)
@@ -105,7 +105,7 @@ sub.BackgroundTransparency=1
 sub.Font=Enum.Font.GothamBold
 sub.TextSize=18
 sub.TextColor3=Color3.fromRGB(255,255,255)
-sub.Text="Script by phong skibidi"
+sub.Text="Script by Cozy Hub"
 
 TweenService:Create(fill,TweenInfo.new(8,Enum.EasingStyle.Linear),{Size=UDim2.new(1,0,1,0)}):Play()
 
