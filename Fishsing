@@ -69,6 +69,6 @@ openButton.MouseButton1Click:Connect(function()
 
     -- Load script Skbidi (Script 2)
     
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/LucasggkX/Games/refs/heads/main/Auto%20Fishing.lua"))()
+        loadstring(game:HttpGet("https://pastefy.app/p7UryhLo/raw"))()
 
 end)
