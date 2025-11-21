@@ -1,0 +1,92 @@
+-----------------------------
+-- SETTINGS
+-----------------------------
+local MONEY_STAT = "Money"  -- tên tiền trong leaderstats
+local LIMIT_MPS = 16        -- m/s yêu cầu
+
+-----------------------------
+-- TRẠNG THÁI
+-----------------------------
+local Script1Running = false
+local Script2Running = false
+
+-----------------------------
+-- HÀM LOAD SCRIPT (PLACEHOLDER)
+-----------------------------
+
+-- SCRIPT 1
+local function RunScript1()
+    if Script1Running then return end
+    Script1Running = true
+
+    print("[INFO] Script 1 started")
+
+    -- ⚠⚠⚠ TỰ DÁN LOADSTRING SCRIPT 1 Ở ĐÂY ⚠⚠⚠
+    -- loadstring(game:HttpGet("https://raw.githubusercontent.com/aovo4504-bit/-scriptlemonhub/refs/heads/main/script.obfuscated.lua.txt"))()"))()
+
+end
+
+local function StopScript1()
+    if not Script1Running then return end
+    Script1Running = false
+    print("[INFO] Script 1 stopped")
+end
+
+-- SCRIPT 2
+local function RunScript2()
+    if Script2Running then return end
+    Script2Running = true
+
+    print("[INFO] Script 2 started")
+
+    -- ⚠⚠⚠ TỰ DÁN LOADSTRING SCRIPT 2 Ở ĐÂY ⚠⚠⚠
+    -- loadstring(game:HttpGet("https://raw.githubusercontent.com/aovo4504-bit/-scriptlemonhub/refs/heads/main/Fishsing"))()
+
+end
+
+-----------------------------
+-- HÀM LẤY TIỀN
+-----------------------------
+local function getMoney()
+    local ls = game.Players.LocalPlayer:FindFirstChild("leaderstats")
+    if not ls then return 0 end
+
+    local money = ls:FindFirstChild(MONEY_STAT)
+    if not money then return 0 end
+
+    return money.Value
+end
+
+-----------------------------
+-- MAIN PROCESS
+-----------------------------
+
+-- 1. CHẠY SCRIPT 1 TRƯỚC
+RunScript1()
+
+task.wait(2) -- đợi script 1 chạy xong / load xong (tùy bạn chỉnh)
+
+-- 2. BẮT ĐẦU CHECK M/S LIÊN TỤC
+task.spawn(function()
+    while true do
+        local m1 = getMoney()
+        task.wait(1)
+        local m2 = getMoney()
+
+        local mps = m2 - m1
+        print("M/s:", mps)
+
+        -- ====== LOGIC THEO YÊU CẦU BẠN ======
+
+        if mps < LIMIT_MPS then
+            -- <16 m/s
+            if not Script1Running then RunScript1() end
+            RunScript2()  -- Script2 luôn bật chung
+        else
+            -- >16 m/s
+            if Script1Running then StopScript1() end
+            RunScript2() -- Script2 luôn bật
+        end
+
+    end
+end)
