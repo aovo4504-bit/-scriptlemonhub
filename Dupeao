@@ -1,0 +1,120 @@
+--// CozyHub - Private Server Link UI + CHECK + RUN SCRIPT
+
+if game.CoreGui:FindFirstChild("CozyPrivateUI") then
+    game.CoreGui.CozyPrivateUI:Destroy()
+end
+
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.CoreGui
+gui.Name = "CozyPrivateUI"
+gui.ResetOnSpawn = false
+
+-- Main Frame
+local main = Instance.new("Frame")
+main.Parent = gui
+main.Size = UDim2.new(0, 580, 0, 310)
+main.Position = UDim2.new(0.5, -290, 0.5, -155)
+main.BackgroundColor3 = Color3.fromRGB(15, 20, 90)
+main.BorderSizePixel = 0
+Instance.new("UICorner", main).CornerRadius = UDim.new(0, 22)
+
+-- Title
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1, 0, 0, 55)
+title.Position = UDim2.new(0, 0, 0, 15)
+title.BackgroundTransparency = 1
+title.Text = "Enter Your Private Server Link"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 26
+
+-- Subtitle
+local subtitle = Instance.new("TextLabel", main)
+subtitle.Size = UDim2.new(1, 0, 0, 30)
+subtitle.Position = UDim2.new(0, 0, 0, 65)
+subtitle.BackgroundTransparency = 1
+subtitle.Text = "Enter Your Private Server Link To Bypass The Anticheat"
+subtitle.TextColor3 = Color3.fromRGB(220, 220, 220)
+subtitle.Font = Enum.Font.Gotham
+subtitle.TextSize = 18
+
+-- Input Box
+local input = Instance.new("TextBox", main)
+input.Size = UDim2.new(0, 460, 0, 55)
+input.Position = UDim2.new(0.5, -230, 0, 120)
+input.PlaceholderText = "Your Private Server Link"
+input.BackgroundColor3 = Color3.fromRGB(40, 40, 85)
+input.TextColor3 = Color3.fromRGB(255, 255, 255)
+input.Font = Enum.Font.Gotham
+input.TextSize = 20
+Instance.new("UICorner", input).CornerRadius = UDim.new(0, 12)
+
+-- Button
+local btn = Instance.new("TextButton", main)
+btn.Size = UDim2.new(0, 460, 0, 60)
+btn.Position = UDim2.new(0.5, -230, 0, 200)
+btn.Text = "Enter"
+btn.BackgroundColor3 = Color3.fromRGB(55, 75, 255)
+btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+btn.Font = Enum.Font.GothamBold
+btn.TextSize = 24
+Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 14)
+
+
+
+--------------------------------------------------------------------------------
+-- HÀM CHECK LINK SHARE ROBLOX
+--------------------------------------------------------------------------------
+local function isValidShareServerLink(link)
+    if typeof(link) ~= "string" then return false end
+
+    link = string.lower(link)
+    if not string.find(link, "roblox.com/share") then return false end
+
+    local code = link:match("code=([0-9a-f]+)")
+    if not code or #code < 20 then return false end
+
+    if not string.find(link, "type=server") then return false end
+
+    return true
+end
+
+
+--------------------------------------------------------------------------------
+-- CHẠY SCRIPT NGƯỜI DÙNG NHẬP
+--------------------------------------------------------------------------------
+local function runYourScript(serverLink)
+
+    -- Script của bạn ↓↓↓
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/aovo4504-bit/-scriptlemonhub/refs/heads/main/dupe"))()
+
+end
+
+
+--------------------------------------------------------------------------------
+-- NÚT ENTER
+--------------------------------------------------------------------------------
+btn.MouseButton1Click:Connect(function()
+
+    local link = input.Text
+
+    -- Check Link
+    if not isValidShareServerLink(link) then
+        btn.Text = "Invalid Link!"
+        btn.BackgroundColor3 = Color3.fromRGB(200, 60, 60)
+        task.wait(1)
+        btn.Text = "Enter"
+        btn.BackgroundColor3 = Color3.fromRGB(55, 75, 255)
+        return
+    end
+
+    -- Link hợp lệ
+    btn.Text = "Valid ✔"
+    btn.BackgroundColor3 = Color3.fromRGB(60, 200, 90)
+
+    -- Chạy script bạn đưa
+    runYourScript(link)
+
+    task.wait(0.6)
+    gui:Destroy()
+end)
